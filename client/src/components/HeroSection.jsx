@@ -43,7 +43,7 @@ const HeroSection = () => {
         <motion.div
           initial={{ x: -100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 3, type: "spring" }}
+          transition={{ duration: 3, type: "spring", delay: 0.5 }}
           className="flex flex-col items-center md:items-start w-full md:w-1/2"
         >
           <h1 className="mb-2 text-4xl font-bold font-primary text-orange-500 md:text-7xl text-center md:text-left">
@@ -88,11 +88,12 @@ const HeroSection = () => {
           className="flex w-full md:w-1/2 justify-center items-end md:items-center"
         >
           <motion.img
-            animate={{ rotate: [0, -10, 10, 0] }}
+            animate={{ rotate: [0, -10, 10], x: [0, 50, -50] }}
             transition={{
-              duration: 10,
+              duration: 8,
               ease: "easeInOut",
               repeat: Infinity,
+              repeatType: "mirror",
               repeatDelay: 0,
             }}
             src={droneUrl}

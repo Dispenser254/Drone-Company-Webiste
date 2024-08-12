@@ -16,11 +16,12 @@ const FooterSection = () => {
   });
   const scale = useTransform(scrollYProgress, [0, 1], [0.9, 1]);
   const opacity = useTransform(scrollYProgress, [0, 1], [0.5, 1]);
+
   return (
     <motion.footer
       ref={targetRef}
       style={{ scale, opacity }}
-      className="border-t rounded-t-[50px] bg-indigo-950/50 mt-8"
+      className="border-t rounded-t-[50px] bg-indigo-950/50"
     >
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div className="md:flex md:justify-between">
