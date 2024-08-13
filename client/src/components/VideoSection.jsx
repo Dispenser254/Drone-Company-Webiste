@@ -1,11 +1,36 @@
+/* eslint-disable react/prop-types */
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import video1 from "../assets/video/video-1.mp4";
 import video2 from "../assets/video/video-2.mp4";
+
+const Star = ({ x, y, color }) => (
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1, x, y }}
+    transition={{ duration: 0.5, ease: "easeOut" }}
+    className={`absolute w-3 h-3 rounded-full ${color}`}
+    style={{
+      boxShadow: `0 0 10px ${color}`,
+    }}
+  />
+);
 
 const VideoSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+  const [stars, setStars] = useState([]);
+
+  const handleClick = () => {
+    const newStars = [
+      { x: -50, y: -50, color: "bg-red-500" },
+      { x: 50, y: -50, color: "bg-yellow-500" },
+      { x: -50, y: 50, color: "bg-green-500" },
+      { x: 50, y: 50, color: "bg-blue-500" },
+    ];
+    setStars(newStars);
+    setTimeout(() => setStars([]), 1000); // Remove stars after 1 second
+  };
 
   return (
     <div className="bg-blue-400 mx-auto h-auto sm:h-auto lg:h-[120vh] flex flex-col items-center justify-center p-4 pt-16 pb-16">
@@ -31,7 +56,7 @@ const VideoSection = () => {
           <video
             className="w-full h-full rounded-xl"
             src={video1}
-            autoPlay={isInView}
+            autoPlay
             loop
             controls
             muted
@@ -42,7 +67,7 @@ const VideoSection = () => {
           <video
             className="w-full h-full rounded-xl"
             src={video2}
-            autoPlay={isInView}
+            autoPlay
             loop
             muted
             playsInline
@@ -51,9 +76,21 @@ const VideoSection = () => {
         </div>
       </div>
       <div className="flex items-center justify-center m-8">
-        <button className="px-8 py-3 bg-blue-500 text-white rounded-3xl hover:bg-blue-700 transition duration-300">
+        <motion.button
+          whileHover={{
+            scale: 1.1,
+          }}
+          whileTap={{
+            scale: 0.8,
+          }}
+          onClick={handleClick}
+          className="relative px-12 py-3 bg-orange-500 text-white rounded-3xl hover:bg-orange-700"
+        >
           Get Started
-        </button>
+        </motion.button>
+        {stars.map((star, index) => (
+          <Star key={index} x={star.x} y={star.y} color={star.color} />
+        ))}
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import droneSvg from "../assets/img/drone-svg.svg";
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 const NavbarSection = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -84,45 +85,32 @@ const NavbarSection = () => {
             } font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-900 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0`}
           >
             <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-white hover:bg-indigo-500 rounded md:p-0"
-                aria-current="page"
-              >
-                Home
-              </a>
+              <Link to={"/"}>
+                <a className="block py-2 px-3 text-white hover:bg-indigo-500 rounded md:hover:bg-transparent md:border-0 md:p-0">
+                  Home
+                </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-white rounded hover:bg-indigo-500 md:hover:bg-transparent md:border-0 md:p-0"
-              >
-                About
-              </a>
+              <Link to={"/about"}>
+                <a className="block py-2 px-3 text-white rounded hover:bg-indigo-500 md:hover:bg-transparent md:border-0 md:p-0">
+                  About
+                </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-white rounded hover:bg-indigo-500 md:hover:bg-transparent md:border-0 md:p-0"
-              >
-                Services
-              </a>
+              <Link to={"/services"}>
+                <a className="block py-2 px-3 text-white rounded hover:bg-indigo-500 md:hover:bg-transparent md:border-0 md:p-0">
+                  Services
+                </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-white rounded hover:bg-indigo-500 md:hover:bg-transparent md:border-0 md:p-0"
-              >
-                Testimonials
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-white rounded hover:bg-indigo-500 md:hover:bg-transparent md:border-0 md:p-0"
-              >
-                Contact
-              </a>
+              <Link to={"/contact"}>
+                <a className="block py-2 px-3 text-white rounded hover:bg-indigo-500 md:hover:bg-transparent md:border-0 md:p-0">
+                  Contact
+                </a>
+              </Link>
             </li>
           </ul>
         </div>

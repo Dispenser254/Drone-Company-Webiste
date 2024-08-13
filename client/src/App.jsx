@@ -5,16 +5,18 @@ import ProductsPage from "./pages/ProductsPage";
 import ContactPage from "./pages/ContactPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import NavbarSection from "./components/NavbarSection";
 
 const App = () => {
   return (
     <BrowserRouter>
       <ToastContainer />
+      <NavbarSection />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
-        <Route path="/about" element={<ProductsPage />} />
+        <Route path="/services" element={<ProductsPage />} />
       </Routes>
     </BrowserRouter>
   );
